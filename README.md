@@ -4,10 +4,6 @@ A modern, premium, and responsive AI prompt generator designed specifically for 
 
 This tool helps digital creators, designers, and social media managers generate optimized AI art prompts based on a database of curated visual components: art styles, subjects, moods, lightings, and extra modifier tags.
 
-# AI Photo Prompt Generator
-
-A modern, premium, and responsive AI prompt generator designed specifically for AI Photo and optimized for major social media platforms like Instagram, TikTok, Facebook, Twitter (X), Pinterest, and YouTube.
-
 ## 🌐 Live Demo
 
 Generate AI photo prompts online:
