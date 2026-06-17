@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Photo Prompt Generator</title>
+  <meta name="description" content="Generate optimized AI art prompts for AI Photo - tailored for Instagram, TikTok, Pinterest, YouTube, Facebook, and Twitter/X.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Main Generator Container -->
+  <div id="hpg-wrap">
+
+    <div class="hpg-header">
+      <div class="hpg-title">AI Photo <em>Prompt</em> Generator</div>
+      <span class="hpg-sub">Generate AI art prompts for AI Photo — optimized for Instagram, TikTok, Pinterest &amp; every platform you post on.</span>
+    </div>
+
+    <!-- Statistics Tracker -->
+    <div class="hpg-stats">
+      <div class="hpg-stat">
+        <span class="hpg-stat-num" id="hpg-count">0</span>
+        <span class="hpg-stat-lbl">Prompts generated</span>
+      </div>
+      <div class="hpg-stat">
+        <span class="hpg-stat-num">12</span>
+        <span class="hpg-stat-lbl">Art styles</span>
+      </div>
+      <div class="hpg-stat">
+        <span class="hpg-stat-num">8</span>
+        <span class="hpg-stat-lbl">Platforms</span>
+      </div>
+    </div>
+
+    <!-- Platform Selector -->
+    <div class="hpg-platform-wrap">
+      <div class="hpg-field">
+        <span class="hpg-label">
+          Platform / Social App
+          <span class="hpg-new-badge">New</span>
+        </span>
+        <select id="hpg-platform" onchange="hpgUpdateHint()">
+          <option value="general">General / Any Platform</option>
+          <option value="instagram_feed">Instagram — Feed Post</option>
+          <option value="instagram_stories">Instagram — Stories &amp; Reels</option>
+          <option value="facebook">Facebook Post</option>
+          <option value="twitter">Twitter / X Post</option>
+          <option value="pinterest">Pinterest Pin</option>
+          <option value="youtube">YouTube Thumbnail</option>
+          <option value="tiktok">TikTok</option>
+        </select>
+        <span class="hpg-platform-hint" id="hpg-platform-hint"></span>
+      </div>
+    </div>
+
+    <!-- Dropdowns Grid -->
+    <div class="hpg-grid">
+      <div class="hpg-field">
+        <span class="hpg-label">Art Style</span>
+        <select id="hpg-style">
+          <option value="anime">Anime / Manga</option>
+          <option value="oil">Oil Painting</option>
+          <option value="watercolor">Watercolor</option>
+          <option value="cyberpunk">Cyberpunk</option>
+          <option value="fantasy">Fantasy Art</option>
+          <option value="sketch">Pencil Sketch</option>
+          <option value="vintage">Vintage / Retro</option>
+          <option value="neon">Neon Glow</option>
+          <option value="dreamy">Dreamy / Soft</option>
+          <option value="pixel">Pixel Art</option>
+          <option value="cartoon">Cartoon</option>
+          <option value="cinematic">Cinematic</option>
+        </select>
+      </div>
+      <div class="hpg-field">
+        <span class="hpg-label">Subject</span>
+        <select id="hpg-subject">
+          <option value="portrait">Portrait / Selfie</option>
+          <option value="landscape">Landscape / Nature</option>
+          <option value="city">City / Urban</option>
+          <option value="animal">Animal / Pet</option>
+          <option value="food">Food / Still Life</option>
+          <option value="abstract">Abstract</option>
+          <option value="fashion">Fashion / Outfit</option>
+          <option value="architecture">Architecture</option>
+        </select>
+      </div>
+      <div class="hpg-field">
+        <span class="hpg-label">Mood</span>
+        <select id="hpg-mood">
+          <option value="epic">Epic / Dramatic</option>
+          <option value="peaceful">Peaceful / Calm</option>
+          <option value="mysterious">Dark / Mysterious</option>
+          <option value="bright">Bright / Cheerful</option>
+          <option value="romantic">Romantic / Warm</option>
+          <option value="melancholic">Melancholic</option>
+          <option value="surreal">Surreal / Trippy</option>
+          <option value="minimal">Minimal / Clean</option>
+        </select>
+      </div>
+      <div class="hpg-field">
+        <span class="hpg-label">Lighting</span>
+        <select id="hpg-light">
+          <option value="golden hour light">Golden hour</option>
+          <option value="neon ambient lighting">Neon lights</option>
+          <option value="soft diffused light">Soft diffused light</option>
+          <option value="dramatic rim lighting">Dramatic shadows</option>
+          <option value="cool moonlight">Moonlight</option>
+          <option value="professional studio lighting">Studio lighting</option>
+          <option value="warm sunbeams">Sunbeams</option>
+          <option value="warm candlelight">Candlelight</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Modifiers -->
+    <div class="hpg-mods">
+      <span class="hpg-label">Extra Modifiers (Optional)</span>
+      <div class="hpg-tags" id="hpg-tags">
+        <span class="hpg-tag" data-v="ultra detailed">ultra detailed</span>
+        <span class="hpg-tag" data-v="bokeh background">bokeh background</span>
+        <span class="hpg-tag" data-v="8K resolution">8K resolution</span>
+        <span class="hpg-tag" data-v="award winning">award winning</span>
+        <span class="hpg-tag" data-v="trending on ArtStation">trending on ArtStation</span>
+        <span class="hpg-tag" data-v="hyper realistic">hyper realistic</span>
+        <span class="hpg-tag" data-v="soft focus">soft focus</span>
+        <span class="hpg-tag" data-v="vibrant colors">vibrant colors</span>
+        <span class="hpg-tag" data-v="shallow depth of field">shallow depth of field</span>
+        <span class="hpg-tag" data-v="symmetrical composition">symmetrical composition</span>
+      </div>
+    </div>
+
+    <!-- Generate Trigger Button -->
+    <button class="hpg-btn-gen" onclick="hpgGenerate()">✦ Generate Prompt</button>
+
+    <!-- Result Display Area -->
+    <div class="hpg-result" id="hpg-result">
+      <div class="hpg-res-head">
+        <span class="hpg-res-lbl">Your AI Photo Prompt</span>
+        <div class="hpg-chips" id="hpg-chips"></div>
+      </div>
+      <div class="hpg-prompt-text" id="hpg-out"></div>
+      <div class="hpg-btn-row">
+        <button class="hpg-btn-copy" onclick="hpgCopy(this)">Copy Prompt</button>
+        <button class="hpg-btn-regen" onclick="hpgGenerate()">↻ Regenerate</button>
+      </div>
+    </div>
+
+    <!-- Recent History List -->
+    <div class="hpg-history" id="hpg-history">
+      <div class="hpg-hist-lbl">Recent Prompts</div>
+      <div id="hpg-hist-list"></div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
